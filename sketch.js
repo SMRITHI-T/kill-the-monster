@@ -1,11 +1,15 @@
-var Engine = Matter.Engine,
-  World = Matter.World,
-  Events = Matter.Events,
-  Bodies = Matter.Bodies;
-
+var Engine = Matter.Engine;
+ const World = Matter.World;
+ const Events = Matter.Events;
+const Bodies = Matter.Bodies;
+var monster, monsterImage;
 function preload() {
 //preload the images here
-Mback=loadImage("")
+mback=loadImage("GamingBackground.png");
+nback=loadImage("GamingBackground.jpg");
+monsterImage=loadImage("Monster-01.png");
+//monster2=loadImage("Monster-02.png");
+//monster=loadImage("monster.png");
 
 }
 
@@ -13,53 +17,56 @@ function setup() {
   createCanvas(3000, 800);
   engine = Engine.create();
   world = engine.world;
-ground=new Ground(1500,750,300,20);
+ground=new Ground(1500,750,3000,20);
+hero=new Hero(200,400);
   //row 1
-box1=new Box(500,750);
-box2=new Box(500,700);
-box3=new Box(500,650);
-box4=new Box(500,600);
-box5=new Box(500,550);
-box6=new Box(500,500);
-box7=new Box(500,450);
-box8=new Box(500,400);
-box9=new Box(500,350);
-box10=new Box(500,300);
+box1=new Box(700,750);
+box2=new Box(700,700);
+box3=new Box(700,650);
+box4=new Box(700,600);
+box5=new Box(700,550);
+box6=new Box(700,500);
+box7=new Box(700,450);
+box8=new Box(700,400);
+box9=new Box(700,350);
+box10=new Box(700,300);
 //row 2
-box11=new Box(600,750);
-box12=new Box(600,700);
-box13=new Box(600,650);
-box14=new Box(600,600);
-box15=new Box(600,550);
-box16=new Box(600,500);
-box17=new Box(600,450);
-box18=new Box(600,400);
-box19=new Box(600,350);
+box11=new Box(800,750);
+box12=new Box(800,700);
+box13=new Box(800,650);
+box14=new Box(800,600);
+box15=new Box(800,550);
+box16=new Box(800,500);
+box17=new Box(800,450);
+box18=new Box(800,400);
+box19=new Box(800,350);
 //row 3
-box20=new Box(700,750);
-box21=new Box(700,700);
-box22=new Box(700,650);
-box23=new Box(700,600);
-box24=new Box(700,550);
-box25=new Box(700,500);
-box26=new Box(700,450);
-box27=new Box(700,400);
+box20=new Box(900,750);
+box21=new Box(900,700);
+box22=new Box(900,650);
+box23=new Box(900,600);
+box24=new Box(900,550);
+box25=new Box(900,500);
+box26=new Box(900,450);
+box27=new Box(900,400);
 //row 4
-box28=new Box(800,750);
-box29=new Box(800,700);
-box30=new Box(800,650);
-box31=new Box(800,600);
-box32=new Box(800,550);
-box33=new Box(800,500);
-box34=new Box(800,450);
+box28=new Box(1000,750);
+box29=new Box(1000,700);
+box30=new Box(1000,650);
+box31=new Box(1000,600);
+box32=new Box(1000,550);
+box33=new Box(1000,500);
+box34=new Box(1000,450);
 
+monster = Bodies.circle(1100,400,20);
+    World.add(world,monster);
 
 
 
 }
 
 function draw() {
-  background(0);
+  background(nback);
   Engine.update(engine);
 ground.display();
 
@@ -97,4 +104,18 @@ box31.display();
 box32.display();
 box33.display();
 box34.display();
+hero.display();
+}
+imageMode(CENTER);
+image(polygonImage, polygon.position.x, polygon.position.y,40,40);
+    slingshot.display();
+    
+function mouseDragged(){
+  matter.body.setPosition(hero.body,{x:mouseX, y:mouseY});
+}
+
+function keyPressed(){
+  if(keyCode===32){
+    slingshot.attach(hero);
+  }
 }

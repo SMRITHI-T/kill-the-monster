@@ -1,5 +1,5 @@
 class Box{
-    constructor(x, y, width, height) {
+    constructor(x, y) {
         var options = {
            
             restitution :0.4,
@@ -7,13 +7,16 @@ class Box{
             //isStatic:true
            
         }
-        this.body = Bodies.rectangle(x, y, width, height, options);
-        this.width = width;
-        this.height = height;
+        
+        this.width = 50;
+        this.height = 50;
+        this.x=x;
+        this.y=y;
+        this.body = Bodies.rectangle(x, y, this.width, this.height, options);
         World.add(world, this.body);
       }
       display(){
-        if(this.body.speed<4){
+        if(this.body.speed<8){
           var angle = this.body.angle;
         var pos= this.body.position;
         push();
@@ -22,15 +25,13 @@ class Box{
         rectMode(CENTER);
         rect(0,0,this.width, this.height);
         pop();
+        }
         else{
           World.remove(world, this.body);
           push();
           this.visibility=this.visibility-5;
-          tint(255,this.visibility);
-          Image(this.image,this.body.position.x, this.body.position.y, 50, 50);
         pop();
         } 
-      }
         
       }
 }
