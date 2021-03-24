@@ -2,6 +2,7 @@ var Engine = Matter.Engine;
  const World = Matter.World;
  const Events = Matter.Events;
 const Bodies = Matter.Bodies;
+const Constraint = Matter.Constraint;
 var monster, monsterImage;
 function preload() {
 //preload the images here
@@ -18,7 +19,8 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 ground=new Ground(1500,750,3000,20);
-hero=new Hero(200,400);
+hero=new Hero(200,400,20);
+slingshot = new Fly(hero.body,{x: 200,y:400})
   //row 1
 box1=new Box(700,750);
 box2=new Box(700,700);
@@ -105,13 +107,12 @@ box32.display();
 box33.display();
 box34.display();
 hero.display();
-}
-imageMode(CENTER);
-image(polygonImage, polygon.position.x, polygon.position.y,40,40);
-    slingshot.display();
+
+slingshot.display();
+}    
     
 function mouseDragged(){
-  matter.body.setPosition(hero.body,{x:mouseX, y:mouseY});
+  Matter.Body.setPosition(hero.body,{x:mouseX, y:mouseY});
 }
 
 function keyPressed(){
