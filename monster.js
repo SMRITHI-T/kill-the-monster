@@ -1,4 +1,4 @@
-class Hero{
+class Monster{
     constructor(x, y,r) {
         var options = {
            
@@ -8,14 +8,14 @@ class Hero{
         this.x=x;
         this.y=y;
         this.r=r;
-        this.image=loadImage("superhero.png");
+        this.image=loadImage("Monster-01.png");
         this.body=Bodies.circle(this.x,this.y,(this.r)/2,options);
         World.add(world,this.body);
     }
     display(){ 
-       var heroPos=this.body.position;
+       var monsterPos=this.body.position;
        push();
-       translate(heroPos.x,heroPos.y);
+       translate(monsterPos.x,monsterPos.y);
        fill(255,0,255);
         imageMode(CENTER); 
         image(this.image,0,0,this.r,this.r) 

@@ -19,7 +19,7 @@ class Fly{
         var pointA = this.sling.bodyA.position;
         var pointB = this.pointB;
         
-        strokeWeight(4);
+        strokeWeight(0);
         stroke("turquoise");
         line(pointA.x, pointA.y, pointB.x, pointB.y);
         }

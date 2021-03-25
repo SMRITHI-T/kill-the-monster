@@ -3,23 +3,23 @@ var Engine = Matter.Engine;
  const Events = Matter.Events;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
-var monster, monsterImage;
 function preload() {
 //preload the images here
-mback=loadImage("GamingBackground.png");
+//mback=loadImage("GamingBackground.png");
 nback=loadImage("GamingBackground.jpg");
-monsterImage=loadImage("Monster-01.png");
+//monsterImage=loadImage("Monster-01.png");
 //monster2=loadImage("Monster-02.png");
 //monster=loadImage("monster.png");
 
 }
 
 function setup() {
-  createCanvas(3000, 800);
+  createCanvas(1500, 800);
   engine = Engine.create();
   world = engine.world;
-ground=new Ground(1500,750,3000,20);
-hero=new Hero(200,400,20);
+ground=new Ground(750,750,1500,20);
+hero=new Hero(200,400,150);
+monster=new Monster(1200,400,150);
 slingshot = new Fly(hero.body,{x: 200,y:400})
   //row 1
 box1=new Box(700,750);
@@ -60,10 +60,6 @@ box32=new Box(1000,550);
 box33=new Box(1000,500);
 box34=new Box(1000,450);
 
-monster = Bodies.circle(1100,400,20);
-    World.add(world,monster);
-
-
 
 }
 
@@ -71,6 +67,9 @@ function draw() {
   background(nback);
   Engine.update(engine);
 ground.display();
+//if (hero.position.x=700-1000&&hero.position.y=750-300){
+//monster.position=
+//}
 
 box1.display();
 box2.display();
@@ -107,6 +106,7 @@ box32.display();
 box33.display();
 box34.display();
 hero.display();
+monster.display();
 
 slingshot.display();
 }    

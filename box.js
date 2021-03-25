@@ -22,6 +22,8 @@ class Box{
         push();
         translate(pos.x, pos.y);
         rotate(angle);
+        strokeWeight(4);
+        stroke("turquoise")
         rectMode(CENTER);
         rect(0,0,this.width, this.height);
         pop();
